@@ -1,5 +1,7 @@
+import Layout from './layouts/Layout';
+
 function App() {
-  return <h1>Workspace</h1>;
+  return <Layout />;
 }
 
 export default App;
