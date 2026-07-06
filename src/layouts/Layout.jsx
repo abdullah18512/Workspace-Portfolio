@@ -1,16 +1,18 @@
+import ActivityBar from "../components/ActivityBar/ActivityBar";
 import TitleBar from "../components/TitleBar/TitleBar";
 
 function Layout() {
   return (
     <div className="h-screen w-screen bg-[#1e1e1e] flex flex-col">
       {/* Title Bar */}
-      <TitleBareBar />
+      <TitleBar />
 
       {/* Main Content */}
       <div className="flex flex-1">
-        {/* Activity Bar */}
-        <div className="w-12 bg-[#181818] border-r border-neutral-700">
-          Activity
+
+        <div className="w-12 h-full bg-[#181818] border-r border-neutral-700">
+          {/* Activity Bar */}
+          <ActivityBar />
         </div>
 
         {/* Explorer */}
