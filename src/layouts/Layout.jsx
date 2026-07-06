@@ -1,10 +1,10 @@
+import TitleBar from "../components/TitleBar/TitleBar";
+
 function Layout() {
   return (
     <div className="h-screen w-screen bg-[#1e1e1e] flex flex-col">
       {/* Title Bar */}
-      <div className="h-9 bg-[#181818] border-b border-neutral-700">
-        Title Bar
-      </div>
+      <TitleBareBar />
 
       {/* Main Content */}
       <div className="flex flex-1">
