@@ -1,4 +1,5 @@
 import ActivityBar from "../components/ActivityBar/ActivityBar";
+import Explorer from "../components/Explorer/Explorer";
 import TitleBar from "../components/TitleBar/TitleBar";
 
 function Layout() {
@@ -17,7 +18,7 @@ function Layout() {
 
         {/* Explorer */}
         <div className="w-64 bg-[#252526] border-r border-neutral-700">
-          Explorer
+          <Explorer/>
         </div>
 
         {/* Editor */}
