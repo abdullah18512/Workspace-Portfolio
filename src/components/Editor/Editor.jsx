@@ -1,4 +1,5 @@
 import Tabs from "../Tabs/Tabs"
+import ReactMarkdown from 'react-markdown'
 
 const Editor = ({ activeFile }) => {
     return (
@@ -19,10 +20,10 @@ const Editor = ({ activeFile }) => {
                     :
                     (
                         <>
-                            <div className="w-full h-full overflow-auto">
-                                <pre className="whitespace-pre-wrap">
+                            <div className="w-full h-full overflow-auto prose prose-invert max-w-none">
+                                <ReactMarkdown>
                                     {activeFile.content}
-                                </pre>
+                                </ReactMarkdown>
                             </div>
 
                         </>

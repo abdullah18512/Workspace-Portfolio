@@ -1,15 +1,18 @@
+import readme from "../content/README.md?raw";
+import about from "../content/About.md?raw";
+
 const explorerItems = [
   {
     id: 1,
     name: "README.md",
     type: "markdown",
-    content: '#HI 👋 I am Abdullah Welcome to my Workspace'
+    content: readme
   },
   {
     id: 2,
     name: "About.md",
     type: "markdown",
-    content: '...'
+    content: about
   },
   {
     id: 3,
