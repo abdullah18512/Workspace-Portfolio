@@ -1,24 +1,36 @@
-const Editor = ({activeFile}) => {
-  if(!activeFile){
-      return (
-        <div className="text-white flex justify-center items-center text flex-col gap-4">
-            <h1 className="font-bold text-3xl text-center">
-                Welcome to Abdullah's Workspace.
-            </h1>
-            <p>
-                A portfolio disguised as a code editor.
-            </p>
-            <p>
-                Open a file to start exploring.
-            </p>
+import Tabs from "../Tabs/Tabs"
+
+const Editor = ({ activeFile }) => {
+    return (
+        <div>
+            <Tabs activeFile={activeFile} />
+            <div className="flex-1 flex justify-center items-center flex-col gap-4 p-6">
+                {!activeFile ?
+                    (
+                        <>
+                            <h1 className="font-bold text-3xl text-center text-white">
+                                Welcome to Abdullah's Workspace.
+                            </h1>
+
+                            <p className="text-white">A portfolo disguided as a code editor.</p>
+                            <p className=" text-white">Open a file to start exploring</p>
+                        </>
+                    )
+                    :
+                    (
+                        <>
+                            <div className="w-full h-full overflow-auto">
+                                <pre className="whitespace-pre-wrap">
+                                    {activeFile.content}
+                                </pre>
+                            </div>
+
+                        </>
+                    )
+                }
+            </div>
         </div>
     )
-  }
-  return(
-    <div className="text-white p-6">
-        <h1>{activeFile.name}</h1>
-    </div>
-  )
 }
 
 export default Editor

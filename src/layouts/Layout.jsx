@@ -26,7 +26,7 @@ function Layout() {
         </div>
 
         {/* Editor */}
-        <div className="flex bg-[#1e1e1e]">
+        <div className="flex flex-1 bg-[#1e1e1e]">
           <Editor activeFile={activeFile}/>
         </div>
       </div>
