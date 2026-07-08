@@ -1,7 +1,7 @@
 import explorerItems from "../../data/explorerItems";
 import FileItem from "./FileItem";
 
-const FileTree = () => {
+const FileTree = ({setActiveFile}) => {
     return (
         <div >
             {
@@ -9,6 +9,7 @@ const FileTree = () => {
                     <FileItem
                         key = {item.id}
                         item = {item}
+                        setActiveFile = {setActiveFile}
                     />
                 ))
             }

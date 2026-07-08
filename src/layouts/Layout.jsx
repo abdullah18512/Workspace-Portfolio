@@ -1,8 +1,12 @@
+import { useState } from "react";
 import ActivityBar from "../components/ActivityBar/ActivityBar";
+import Editor from "../components/Editor/Editor";
 import Explorer from "../components/Explorer/Explorer";
 import TitleBar from "../components/TitleBar/TitleBar";
 
+
 function Layout() {
+  const [activeFile, setActiveFile] = useState(null);
   return (
     <div className="h-screen w-screen bg-[#1e1e1e] flex flex-col">
       {/* Title Bar */}
@@ -18,12 +22,12 @@ function Layout() {
 
         {/* Explorer */}
         <div className="w-64 bg-[#252526] border-r border-neutral-700">
-          <Explorer/>
+          <Explorer setActiveFile={setActiveFile}/>
         </div>
 
         {/* Editor */}
-        <div className="flex-1 bg-[#1e1e1e]">
-          Editor
+        <div className="flex bg-[#1e1e1e]">
+          <Editor activeFile={activeFile}/>
         </div>
       </div>
 

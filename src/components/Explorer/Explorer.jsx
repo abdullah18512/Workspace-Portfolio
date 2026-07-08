@@ -2,11 +2,11 @@ import React from 'react'
 import ExplorerHeader from './ExplorerHeader'
 import FileTree from './FileTree'
 
-const Explorer = () => {
+const Explorer = ({setActiveFile}) => {
   return (
     <div>
       <ExplorerHeader/>
-      <FileTree/>
+      <FileTree setActiveFile={setActiveFile}/>
     </div>
   )
 }

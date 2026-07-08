@@ -7,11 +7,13 @@ const fileIcons = {
   json: Braces
 };
 
-const FileItem = ({item}) => {
+const FileItem = ({item, setActiveFile}) => {
   const Icon = fileIcons[item.type];
 
   return (
-    <div className="flex items-center gap-2 px-2 py-1 hover:bg-[#2a2d2e] cursor-pointer">
+    <div className="flex items-center gap-2 px-3 py-1 hover:bg-[#2a2d2e] text-white cursor-pointer"
+    onClick={()=> setActiveFile(item)}
+    >
         <Icon size = {16}/>
 
         <span>{item.name}</span>
