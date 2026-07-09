@@ -7,14 +7,14 @@ const fileIcons = {
   json: Braces
 };
 
-const FileItem = ({item, setActiveFile}) => {
+const FileItem = ({item, handleOpenFile}) => {
   const Icon = fileIcons[item.type];
 
   return (
     <div className="flex items-center gap-2 px-3 py-1 hover:bg-[#2a2d2e] text-white cursor-pointer"
-    onClick={()=> setActiveFile(item)}
+    onClick={()=> handleOpenFile(item)}
     >
-        <Icon size = {16}/>
+        <Icon size = {15}/>
 
         <span>{item.name}</span>
     </div>

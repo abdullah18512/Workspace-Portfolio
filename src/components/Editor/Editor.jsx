@@ -1,10 +1,16 @@
 import Tabs from "../Tabs/Tabs"
 import ReactMarkdown from 'react-markdown'
 
-const Editor = ({ activeFile }) => {
+const Editor = ({ activeFile, openFile, handleSwitchTab, handleCloseTab }) => {
     return (
         <div className="flex flex-col flex-1 h-full min-h-0">
-            <Tabs activeFile={activeFile} />
+            <Tabs
+                activeFile={activeFile}
+                openFile={openFile}
+                handleSwitchTab = {handleSwitchTab}
+                handleCloseTab = {handleCloseTab}
+            />
+
             <div className="flex-1 flex justify-center items-center flex-col gap-4 p-6 min-h-0">
                 {!activeFile ?
                     (

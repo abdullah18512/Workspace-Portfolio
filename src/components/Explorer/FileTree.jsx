@@ -1,7 +1,7 @@
 import explorerItems from "../../data/explorerItems";
 import FileItem from "./FileItem";
 
-const FileTree = ({setActiveFile}) => {
+const FileTree = ({handleOpenFile}) => {
     return (
         <div >
             {
@@ -9,7 +9,7 @@ const FileTree = ({setActiveFile}) => {
                     <FileItem
                         key = {item.id}
                         item = {item}
-                        setActiveFile = {setActiveFile}
+                        handleOpenFile = {handleOpenFile}
                     />
                 ))
             }
