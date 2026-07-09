@@ -20,10 +20,12 @@ const Editor = ({ activeFile }) => {
                     )
                     :
                     (
-                        <div className="w-full flex-1 overflow-y-auto prose prose-invert max-w-none">
-                            <ReactMarkdown>
-                                {activeFile.content}
-                            </ReactMarkdown>
+                        <div className="w-full flex-1 overflow-y-auto px-6 py-4">
+                            <div className="prose prose-invert max-w-none">
+                                <ReactMarkdown>
+                                    {activeFile.content}
+                                </ReactMarkdown>
+                            </div>
                         </div>
                     )
                 }
