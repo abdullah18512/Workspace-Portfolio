@@ -13,7 +13,7 @@ function Layout() {
       <TitleBar />
 
       {/* Main Content */}
-      <div className="flex flex-1">
+      <div className="flex flex-1 min-h-0">
 
         <div className="w-12 h-full bg-[#181818] border-r border-neutral-700">
           {/* Activity Bar */}
@@ -26,7 +26,7 @@ function Layout() {
         </div>
 
         {/* Editor */}
-        <div className="flex flex-1 bg-[#1e1e1e]">
+        <div className="flex flex-1 min-h-0 bg-[#1e1e1e]">
           <Editor activeFile={activeFile}/>
         </div>
       </div>

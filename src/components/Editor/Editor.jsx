@@ -3,30 +3,28 @@ import ReactMarkdown from 'react-markdown'
 
 const Editor = ({ activeFile }) => {
     return (
-        <div>
+        <div className="flex flex-col flex-1 h-full min-h-0">
             <Tabs activeFile={activeFile} />
-            <div className="flex-1 flex justify-center items-center flex-col gap-4 p-6">
+            <div className="flex-1 flex justify-center items-center flex-col gap-4 p-6 min-h-0">
                 {!activeFile ?
                     (
-                        <>
+                        <div>
                             <h1 className="font-bold text-3xl text-center text-white">
                                 Welcome to Abdullah's Workspace.
                             </h1>
 
                             <p className="text-white">A portfolo disguided as a code editor.</p>
                             <p className=" text-white">Open a file to start exploring</p>
-                        </>
+                        </div>
+
                     )
                     :
                     (
-                        <>
-                            <div className="w-full h-full overflow-auto prose prose-invert max-w-none">
-                                <ReactMarkdown>
-                                    {activeFile.content}
-                                </ReactMarkdown>
-                            </div>
-
-                        </>
+                        <div className="w-full flex-1 overflow-y-auto prose prose-invert max-w-none">
+                            <ReactMarkdown>
+                                {activeFile.content}
+                            </ReactMarkdown>
+                        </div>
                     )
                 }
             </div>
