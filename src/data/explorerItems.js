@@ -29,7 +29,20 @@ const explorerItems = [
         id: 4,
         name: "Projects",
         type: "folder",
-        children: []
+        children: [
+          {
+            id: 6,
+            name: "Workspace Portfolio.md",
+            type: "markdown",
+            content: "..."
+          },
+          {
+            id: 7,
+            name: "Calculator App.md",
+            type: "markdown",
+            content: "..."
+          }
+        ]
       },
       {
         id: 5,

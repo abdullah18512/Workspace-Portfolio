@@ -3,19 +3,15 @@ import FileItem from "./FileItem";
 
 const rootFolder = explorerItems[0];
 
-const FileTree = ({handleOpenFile}) => {
+const FileTree = ({ handleOpenFile }) => {
     return (
         <div >
-            <FileItem
-                item={rootFolder}
-                handleOpenFile={handleOpenFile}
-            />
-
-            {rootFolder.children.map((item)=> (
+            {explorerItems.map((item) => (
                 <FileItem
                     key={item.id}
                     item={item}
                     handleOpenFile={handleOpenFile}
+                    level={0}
                 />
             ))}
         </div>
