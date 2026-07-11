@@ -1,5 +1,5 @@
 import { Braces, ChevronDown, ChevronRight, File, FileText, Folder } from "lucide-react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const fileIcons = {
   markdown: FileText,
@@ -11,7 +11,9 @@ const fileIcons = {
 const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
   const Icon = fileIcons[item.type];
   const [isOpen, setIsOpen] = useState(true);
-  console.log(item);
+  useEffect(()=>{
+    const hasActiveChild = item.children?.some((child)=>child.id === activeFile?.id);
+  }, [activeFile]);
 
   return (
     <>
@@ -19,7 +21,7 @@ const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
       <div
         style={{ paddingLeft: `${level * 16}px` }}
         className={`
-        flex items-center gap-2 px-3 py-1 text-white cursor-pointer
+        flex items-center gap-2 px-3 py-1 text-white cursor-pointer transition-colors duration-100
            ${activeFile?.id === item.id ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`
         }
         onClick={() => {

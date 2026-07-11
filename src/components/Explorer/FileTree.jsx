@@ -3,6 +3,7 @@ import FileItem from "./FileItem";
 
 const rootFolder = explorerItems[0];
 
+
 const FileTree = ({ handleOpenFile, activeFile}) => {
     return (
         <div >
@@ -12,7 +13,7 @@ const FileTree = ({ handleOpenFile, activeFile}) => {
                     item={item}
                     handleOpenFile={handleOpenFile}
                     activeFile = {activeFile}
-                    level={0}
+                    level={0+1}
                 />
             ))}
         </div>
