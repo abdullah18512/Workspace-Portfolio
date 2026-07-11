@@ -3,7 +3,7 @@ import about from "../content/About.md?raw";
 
 const explorerItems = [
   {
-    id: 1,
+    id: 0,
     name: "Portfolio",
     type: "folder",
     children: [

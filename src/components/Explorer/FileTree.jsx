@@ -3,7 +3,7 @@ import FileItem from "./FileItem";
 
 const rootFolder = explorerItems[0];
 
-const FileTree = ({ handleOpenFile }) => {
+const FileTree = ({ handleOpenFile, activeFile}) => {
     return (
         <div >
             {explorerItems.map((item) => (
@@ -11,6 +11,7 @@ const FileTree = ({ handleOpenFile }) => {
                     key={item.id}
                     item={item}
                     handleOpenFile={handleOpenFile}
+                    activeFile = {activeFile}
                     level={0}
                 />
             ))}

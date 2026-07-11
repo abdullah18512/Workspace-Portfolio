@@ -2,7 +2,7 @@ import { Blocks, Folder, GitBranch, Play, Search, Settings, User } from "lucide-
 
 const ActivityBar = () => {
     return (
-        <div className="h-full flex flex-col justify-between items-center text-white">
+        <div className="h-full flex flex-col justify-between items-center text-gray-400">
             <div className="flex flex-col gap-4">
                 {/* TopIcons  */}
                 <Folder />

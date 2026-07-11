@@ -8,7 +8,7 @@ const fileIcons = {
   json: Braces
 };
 
-const FileItem = ({ item, handleOpenFile, level }) => {
+const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
   const Icon = fileIcons[item.type];
   const [isOpen, setIsOpen] = useState(true);
   console.log(item);
@@ -18,7 +18,10 @@ const FileItem = ({ item, handleOpenFile, level }) => {
 
       <div
         style={{ paddingLeft: `${level * 16}px` }}
-        className="flex items-center gap-2 px-3 py-1 hover:bg-[#2a2d2e] text-white cursor-pointer"
+        className={`
+        flex items-center gap-2 px-3 py-1 text-white cursor-pointer
+           ${activeFile?.id === item.id ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`
+        }
         onClick={() => {
           if (item.type === "folder") {
             setIsOpen(!isOpen);
@@ -43,6 +46,7 @@ const FileItem = ({ item, handleOpenFile, level }) => {
             key={child.id}
             item={child}
             handleOpenFile={handleOpenFile}
+            activeFile={activeFile}
             level={level + 1}
           />
         ))

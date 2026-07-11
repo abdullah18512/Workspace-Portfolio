@@ -66,7 +66,10 @@ function Layout() {
 
         {/* Explorer */}
         <div className="w-64 bg-[#252526] border-r border-neutral-700">
-          <Explorer handleOpenFile={handleOpenFile} />
+          <Explorer 
+          handleOpenFile={handleOpenFile} 
+          activeFile={activeFile}
+          />
         </div>
 
         {/* Editor */}
@@ -75,7 +78,7 @@ function Layout() {
             activeFile={activeFile}
             openFile={openFile}
             handleSwitchTab={handleSwitchTab}
-            handleCloseTab = {handleCloseTab}
+            handleCloseTab={handleCloseTab}
           />
         </div>
       </div>
