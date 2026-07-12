@@ -7,8 +7,8 @@ const Editor = ({ activeFile, openFile, handleSwitchTab, handleCloseTab }) => {
             <Tabs
                 activeFile={activeFile}
                 openFile={openFile}
-                handleSwitchTab = {handleSwitchTab}
-                handleCloseTab = {handleCloseTab}
+                handleSwitchTab={handleSwitchTab}
+                handleCloseTab={handleCloseTab}
             />
 
             <div className="flex-1 flex justify-center items-center flex-col gap-4 p-6 min-h-0">
@@ -27,10 +27,20 @@ const Editor = ({ activeFile, openFile, handleSwitchTab, handleCloseTab }) => {
                     :
                     (
                         <div className="w-full flex-1 overflow-y-auto px-6 py-4">
-                            <div className="prose prose-invert max-w-none">
-                                <ReactMarkdown>
-                                    {activeFile.content}
-                                </ReactMarkdown>
+                            <div className="w-full flex-1 min-h-0 overflow-hidden">
+                                {activeFile.type === "pdf" ?
+                                    (<iframe
+                                        src={activeFile.content}
+                                        className="w-full h-[calc(100vh-10rem)] rounded-none border-none"
+                                        title={activeFile.name}
+                                    />
+                                    )
+                                    :
+                                    (
+                                        <ReactMarkdown>
+                                            {activeFile.content}
+                                        </ReactMarkdown>
+                                    )}
                             </div>
                         </div>
                     )

@@ -1,6 +1,6 @@
 import readme from "../content/README.md?raw";
 import about from "../content/About.md?raw";
-
+import resume from "../../public/resume.pdf"
 const explorerItems = [
   {
     id: 0,
@@ -23,7 +23,7 @@ const explorerItems = [
         id: 3,
         name: "Resume.pdf",
         type: "pdf",
-        content: '...'
+        content: '/resume.pdf'
       },
       {
         id: 4,
