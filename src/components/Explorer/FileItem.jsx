@@ -1,5 +1,5 @@
 import { Braces, ChevronDown, ChevronRight, File, FileText, Folder } from "lucide-react"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const fileIcons = {
   markdown: FileText,
@@ -11,19 +11,33 @@ const fileIcons = {
 const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
   const Icon = fileIcons[item.type];
   const [isOpen, setIsOpen] = useState(true);
-  useEffect(()=>{
-    const hasActiveChild = item.children?.some((child)=>child.id === activeFile?.id);
+
+  const itemRef = useRef(null);
+  useEffect(() => {
+    const hasActiveChild = item.children?.some((child) => child.id === activeFile?.id);
+    if (hasActiveChild) {
+      setIsOpen(true);
+    }
   }, [activeFile]);
 
+  useEffect(() => {
+    if (activeFile?.id === item.id) {
+      itemRef.current.scrollIntoView();
+    }
+  }, [activeFile]);
   return (
     <>
 
       <div
         style={{ paddingLeft: `${level * 16}px` }}
         className={`
-        flex items-center gap-2 px-3 py-1 text-white cursor-pointer transition-colors duration-100
-           ${activeFile?.id === item.id ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`
-        }
+              flex items-center gap-2 px-2 py-0.75 cursor-pointer text-[13px]
+                  transition-colors duration-100 select-none
+             ${activeFile?.id === item.id
+            ? "bg-[#37373d] text-white"
+            : "text-[#cccccc] hover:bg-[#2a2d2e]"}
+            `}
+        ref={itemRef}
         onClick={() => {
           if (item.type === "folder") {
             setIsOpen(!isOpen);
@@ -31,7 +45,9 @@ const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
           else {
             handleOpenFile(item);
           }
-        }}
+        }
+
+        }
       >
 
         <>
