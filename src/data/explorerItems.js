@@ -48,7 +48,12 @@ const explorerItems = [
         id: 5,
         name: "Contact.json",
         type: "json",
-        content: '...'
+        content: JSON.stringify({
+          name: "Muhammad Abdullah Nadeem",
+          email: "abdvl.n18@gmail.com",
+          linkedin: "www.linkedin.com/in/muhammad-abdullah-nadeem-554216379",
+          github: "https://github.com/abdullah18512"
+        }, null , 2)
       },
     ]
   }
