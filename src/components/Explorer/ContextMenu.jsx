@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-function ContextMenu({x, y, item, onClose}) {
+function ContextMenu({x, y, item, onClose, handleDeleteFile}) {
 
     useEffect(()=>{
         const handleClose = () => onClose();
@@ -11,10 +11,11 @@ function ContextMenu({x, y, item, onClose}) {
         <div
             style={{ top: y, left: x }}
             className="fixed z-50 bg-[#252526] border border-[#454545] shadow-lg text-[#cccccc] text-[13px] w-48"
+            onClick={(e) => e.stopPropagation()}
         >
             <ul>
                 <li className="px-4 py-2 hover:bg-[#094771] cursor-pointer">Rename</li>
-                <li className="px-4 py-2 hover:bg-[#094771] cursor-pointer">Delete</li>
+                <li className="px-4 py-2 hover:bg-[#094771] cursor-pointer" onClick={() => {handleDeleteFile(item);onClose()}}>Delete</li>
                 <li className="px-4 py-2 hover:bg-[#094771] cursor-pointer">New File</li>
                 <li className="px-4 py-2 hover:bg-[#094771] cursor-pointer">New Folder</li>
             </ul>

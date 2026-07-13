@@ -9,7 +9,7 @@ const fileIcons = {
   json: Braces
 };
 
-const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setContextMenu }) => {
+const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setContextMenu, handleDeleteFile}) => {
   const Icon = fileIcons[item.type];
   const [isOpen, setIsOpen] = useState(true);
   const itemRef = useRef(null);
@@ -71,6 +71,7 @@ const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setCon
             activeFile={activeFile}
             contextMenu={contextMenu}
             setContextMenu={setContextMenu}
+            handleDeleteFile ={handleDeleteFile}
             level={level + 1}
           />
         ))
@@ -81,6 +82,7 @@ const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setCon
           y={contextMenu.y}
           item={item}
           onClose={() => setContextMenu(null)}
+          handleDeleteFile ={handleDeleteFile}
         />
       )}
     </>
