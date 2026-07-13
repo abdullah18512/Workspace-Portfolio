@@ -4,18 +4,15 @@ import FileItem from "./FileItem";
 const rootFolder = explorerItems[0];
 
 
-const FileTree = ({ handleOpenFile, activeFile, contextMenu, setContextMenu, handleDeleteFile, items}) => {
+const FileTree = ({ handleOpenFile, activeFile}) => {
     return (
         <div >
-            {items.map((item) => (
+            {explorerItems.map((item) => (
                 <FileItem
                     key={item.id}
                     item={item}
                     handleOpenFile={handleOpenFile}
                     activeFile = {activeFile}
-                    contextMenu = {contextMenu}
-                    setContextMenu = {setContextMenu}
-                    handleDeleteFile = {handleDeleteFile}
                     level={0+1}
                 />
             ))}

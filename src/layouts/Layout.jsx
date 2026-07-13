@@ -3,14 +3,11 @@ import ActivityBar from "../components/ActivityBar/ActivityBar";
 import Editor from "../components/Editor/Editor";
 import Explorer from "../components/Explorer/Explorer";
 import TitleBar from "../components/TitleBar/TitleBar";
-import explorerItems from "../data/explorerItems";
 
 
 function Layout() {
   const [activeFile, setActiveFile] = useState(null);
   const [openFile, setOpenFile] = useState([]);
-  const [contextMenu, setContextMenu] = useState(null);
-  const [items, setItems] = useState(explorerItems);
 
   const handleOpenFile = (file) => {
     const alreadyOpen = openFile.some(
@@ -54,17 +51,6 @@ function Layout() {
     setOpenFile(updatedOpenFiles);
   }
 
-  const handleDeleteFile = (fileToDelete) => {
-    const deleteFromTree = (items) => {
-      return items.filter((item) => item.id !== fileToDelete.id).map((item) => {
-        if (item.children) {
-          return { ...item, children: deleteFromTree(item.children) };
-        }
-        return item;
-      });
-    };
-    setItems(deleteFromTree(items));
-  }
   return (
     <div className="h-screen w-screen bg-[#1e1e1e] flex flex-col">
       {/* Title Bar */}
@@ -80,13 +66,9 @@ function Layout() {
 
         {/* Explorer */}
         <div className="w-64 bg-[#252526] border-r border-neutral-700">
-          <Explorer
-            handleOpenFile={handleOpenFile}
-            activeFile={activeFile}
-            contextMenu={contextMenu}
-            setContextMenu={setContextMenu}
-            handleDeleteFile={handleDeleteFile}
-            items = {items}
+          <Explorer 
+          handleOpenFile={handleOpenFile} 
+          activeFile={activeFile}
           />
         </div>
 

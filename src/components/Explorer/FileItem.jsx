@@ -1,6 +1,5 @@
 import { Braces, ChevronDown, ChevronRight, File, FileText, Folder } from "lucide-react"
 import { useEffect, useRef, useState } from "react";
-import ContextMenu from "./ContextMenu";
 
 const fileIcons = {
   markdown: FileText,
@@ -9,9 +8,10 @@ const fileIcons = {
   json: Braces
 };
 
-const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setContextMenu, handleDeleteFile}) => {
+const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
   const Icon = fileIcons[item.type];
   const [isOpen, setIsOpen] = useState(true);
+
   const itemRef = useRef(null);
   useEffect(() => {
     const hasActiveDescendant = (children) => {
@@ -47,10 +47,7 @@ const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setCon
           }
         }
         }
-        onContextMenu={(e) => {
-          e.preventDefault();
-          setContextMenu({ x: e.clientX, y: e.clientY });
-        }}
+
       >
 
 
@@ -69,22 +66,10 @@ const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setCon
             item={child}
             handleOpenFile={handleOpenFile}
             activeFile={activeFile}
-            contextMenu={contextMenu}
-            setContextMenu={setContextMenu}
-            handleDeleteFile ={handleDeleteFile}
             level={level + 1}
           />
         ))
       }
-      {contextMenu && (
-        <ContextMenu
-          x={contextMenu.x}
-          y={contextMenu.y}
-          item={item}
-          onClose={() => setContextMenu(null)}
-          handleDeleteFile ={handleDeleteFile}
-        />
-      )}
     </>
 
   )
