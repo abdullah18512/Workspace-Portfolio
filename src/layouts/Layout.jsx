@@ -8,6 +8,7 @@ import TitleBar from "../components/TitleBar/TitleBar";
 function Layout() {
   const [activeFile, setActiveFile] = useState(null);
   const [openFile, setOpenFile] = useState([]);
+  const [contextMenu, setContextMenu] = useState(null);
 
   const handleOpenFile = (file) => {
     const alreadyOpen = openFile.some(
@@ -69,6 +70,8 @@ function Layout() {
           <Explorer 
           handleOpenFile={handleOpenFile} 
           activeFile={activeFile}
+          contextMenu = {contextMenu}
+          setContextMenu= {setContextMenu}
           />
         </div>
 

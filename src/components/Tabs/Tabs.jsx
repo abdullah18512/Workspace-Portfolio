@@ -23,6 +23,7 @@ const Tabs = ({ openFile, activeFile, handleSwitchTab, handleCloseTab }) => {
                         key={file.id}
                         onClick={() => handleSwitchTab(file)}
                         className={`
+                            
                             flex items-center gap-2
                             px-4
                             border-r border-neutral-700

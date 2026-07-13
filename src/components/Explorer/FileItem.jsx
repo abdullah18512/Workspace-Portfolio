@@ -1,5 +1,6 @@
 import { Braces, ChevronDown, ChevronRight, File, FileText, Folder } from "lucide-react"
 import { useEffect, useRef, useState } from "react";
+import ContextMenu from "./ContextMenu";
 
 const fileIcons = {
   markdown: FileText,
@@ -8,10 +9,9 @@ const fileIcons = {
   json: Braces
 };
 
-const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
+const FileItem = ({ item, handleOpenFile, level, activeFile, contextMenu, setContextMenu }) => {
   const Icon = fileIcons[item.type];
   const [isOpen, setIsOpen] = useState(true);
-
   const itemRef = useRef(null);
   useEffect(() => {
     const hasActiveDescendant = (children) => {
@@ -36,13 +36,7 @@ const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
 
       <div
         style={{ paddingLeft: `${level * 16}px` }}
-        className={`
-              flex items-center gap-2 px-2 py-0.75 cursor-pointer text-[13px]
-                  transition-colors duration-100 select-none
-             ${activeFile?.id === item.id
-            ? "bg-[#37373d] text-white"
-            : "text-[#cccccc] hover:bg-[#2a2d2e]"}
-            `}
+        className={`flex items-center gap-2 px-2 py-0.75 cursor-pointer text-[13px] transition-colors duration-100 select-none ${activeFile?.id === item.id ? "bg-[#37373d] text-white" : "text-[#cccccc] hover:bg-[#2a2d2e]"} `}
         ref={itemRef}
         onClick={() => {
           if (item.type === "folder") {
@@ -52,9 +46,13 @@ const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
             handleOpenFile(item);
           }
         }
-
         }
+        onContextMenu={(e) => {
+          e.preventDefault();
+          setContextMenu({ x: e.clientX, y: e.clientY });
+        }}
       >
+
 
         <>
           {item.type === "folder" && (isOpen ? (<ChevronDown size={14} />) : (<ChevronRight size={14} />))}
@@ -71,11 +69,22 @@ const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
             item={child}
             handleOpenFile={handleOpenFile}
             activeFile={activeFile}
+            contextMenu={contextMenu}
+            setContextMenu={setContextMenu}
             level={level + 1}
           />
         ))
       }
+      {contextMenu && (
+        <ContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          item={item}
+          onClose={() => setContextMenu(null)}
+        />
+      )}
     </>
+
   )
 }
 
