@@ -3,6 +3,7 @@ import ActivityBar from "../components/ActivityBar/ActivityBar";
 import Editor from "../components/Editor/Editor";
 import Explorer from "../components/Explorer/Explorer";
 import TitleBar from "../components/TitleBar/TitleBar";
+import Terminal from "../components/Terminal/Terminal";
 
 
 function Layout() {
@@ -88,18 +89,8 @@ function Layout() {
 
       {/* Terminal */}
       {isTerminalOpen && (
-        <div className="h-48 bg-[#181818] border-t border-neutral-700 text-white flex flex-col">
-          <div className="flex items-center justify-between px-4 py-1 bg-[#252526] border-b border-neutral-700">
-            <span className="text-[#cccccc] text-[13px]">Terminal</span>
-            <button
-              onClick={() => setIsTerminalOpen(false)}
-              className="text-[#cccccc] hover:text-white text-lg leading-none"
-            >
-              ×
-            </button>
-          </div>
-          <div className="flex-1 p-4 text-[#cccccc] text-[13px] font-mono">
-          </div>
+        <div className="h-48 bg-[#181818] border-t border-neutral-700">
+          <Terminal onClose={() => setIsTerminalOpen(false)} />
         </div>
       )}
 
