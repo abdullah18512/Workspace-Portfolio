@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TypeAnimation } from "react-type-animation";
 
 const Terminal = ({ onClose }) => {
     const [input, setInput] = useState("");
@@ -12,13 +13,24 @@ const Terminal = ({ onClose }) => {
         let output = "";
 
         if (command === "help") {
-            output = `Available commands:
+            if (command === "help") {
+                output = `Available commands:
   show linkedin  - display LinkedIn profile
   show github    - display GitHub profile
   show resume    - display resume link
   show contact   - display email
   clear          - clear terminal`;
-        } else if (command === "clear") {
+            }
+        } else if (command === "show linkedin") {
+            output = "linkedin";
+        } else if (command === "show github") {
+            output = "github";
+        } else if (command === "show resume") {
+            output = "resume";
+        } else if (command === "show contact") {
+            output = "contact";
+        }
+        else if (command === "clear") {
             setHistory([]);
             setInput("");
             return;
@@ -46,7 +58,41 @@ const Terminal = ({ onClose }) => {
                 {history.map((entry, index) => (
                     <div key={index} className="mb-2">
                         <div><span className="text-green-400">$ </span>{entry.command}</div>
-                        <div className="text-[#cccccc] whitespace-pre">{entry.output}</div>
+                        {entry.output === "linkedin" ? (
+                            <a href="https://www.linkedin.com/in/muhammad-abdullah-nadeem-554216379" target="_blank" rel="noreferrer">
+                                <TypeAnimation
+                                    sequence={["linkedin → www.linkedin.com/in/muhammad-abdullah-nadeem-554216379"]}
+                                    speed={80}
+                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                />
+                            </a>
+                        ) : entry.output === "github" ? (
+                            <a href="https://github.com/abdullah18512" target="_blank" rel="noreferrer">
+                                <TypeAnimation
+                                    sequence={["github → https://github.com/abdullah18512"]}
+                                    speed={80}
+                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                />
+                            </a>
+                        ) : entry.output === "resume" ? (
+                            <a href="/resume.pdf" target="_blank" rel="noreferrer">
+                                <TypeAnimation
+                                    sequence={["resume → /resume.pdf (click to open)"]}
+                                    speed={80}
+                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                />
+                            </a>
+                        ) : entry.output === "contact" ? (
+                            <a href="mailto:abdvl.n18@gmail.com">
+                                <TypeAnimation
+                                    sequence={["contact → abdvl.n18@gmail.com"]}
+                                    speed={80}
+                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                />
+                            </a>
+                        ) : (
+                            <div className="text-[#cccccc] whitespace-pre">{entry.output}</div>
+                        )}
                     </div>
                 ))}
             </div>
