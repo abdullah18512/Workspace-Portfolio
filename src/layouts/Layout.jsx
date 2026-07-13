@@ -8,6 +8,7 @@ import TitleBar from "../components/TitleBar/TitleBar";
 function Layout() {
   const [activeFile, setActiveFile] = useState(null);
   const [openFile, setOpenFile] = useState([]);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
   const handleOpenFile = (file) => {
     const alreadyOpen = openFile.some(
@@ -51,6 +52,8 @@ function Layout() {
     setOpenFile(updatedOpenFiles);
   }
 
+
+
   return (
     <div className="h-screen w-screen bg-[#1e1e1e] flex flex-col">
       {/* Title Bar */}
@@ -66,9 +69,9 @@ function Layout() {
 
         {/* Explorer */}
         <div className="w-64 bg-[#252526] border-r border-neutral-700">
-          <Explorer 
-          handleOpenFile={handleOpenFile} 
-          activeFile={activeFile}
+          <Explorer
+            handleOpenFile={handleOpenFile}
+            activeFile={activeFile}
           />
         </div>
 
@@ -84,13 +87,30 @@ function Layout() {
       </div>
 
       {/* Terminal */}
-      <div className="h-48 bg-[#181818] border-t border-neutral-700 text-white">
-        Terminal
-      </div>
+      {isTerminalOpen && (
+        <div className="h-48 bg-[#181818] border-t border-neutral-700 text-white flex flex-col">
+          <div className="flex items-center justify-between px-4 py-1 bg-[#252526] border-b border-neutral-700">
+            <span className="text-[#cccccc] text-[13px]">Terminal</span>
+            <button
+              onClick={() => setIsTerminalOpen(false)}
+              className="text-[#cccccc] hover:text-white text-lg leading-none"
+            >
+              ×
+            </button>
+          </div>
+          <div className="flex-1 p-4 text-[#cccccc] text-[13px] font-mono">
+          </div>
+        </div>
+      )}
 
       {/* Status Bar */}
-      <div className="h-6 bg-[#007acc]">
-        Status Bar
+      <div className="h-6 bg-[#007acc] flex items-center px-3 gap-4">
+        <button
+          onClick={() => setIsTerminalOpen(!isTerminalOpen)}
+          className="text-white text-[12px] hover:bg-[#1f8ad2] px-2 py-0.5 rounded"
+        >
+          Terminal
+        </button>
       </div>
     </div>
   );
