@@ -14,8 +14,14 @@ const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
 
   const itemRef = useRef(null);
   useEffect(() => {
-    const hasActiveChild = item.children?.some((child) => child.id === activeFile?.id);
-    if (hasActiveChild) {
+    const hasActiveDescendant = (children) => {
+      return children?.some((child) => {
+        if (child.id === activeFile?.id) return true;
+        return hasActiveDescendant(child.children);
+      });
+    };
+
+    if (hasActiveDescendant(item.children)) {
       setIsOpen(true);
     }
   }, [activeFile]);
