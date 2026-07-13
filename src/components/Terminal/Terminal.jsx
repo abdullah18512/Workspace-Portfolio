@@ -3,7 +3,13 @@ import { TypeAnimation } from "react-type-animation";
 
 const Terminal = ({ onClose }) => {
     const [input, setInput] = useState("");
-    const [history, setHistory] = useState([]);
+    const [history, setHistory] = useState([
+        {
+            command: " ",
+            output: `Hey twin!\nType 'help' to see available commands✌️`
+        }
+    ]);
+
 
     const handleCommand = (e) => {
         if (e.key !== "Enter") return;
@@ -57,7 +63,10 @@ const Terminal = ({ onClose }) => {
                 {/* command history will render here */}
                 {history.map((entry, index) => (
                     <div key={index} className="mb-2">
-                        <div><span className="text-green-400">$ </span>{entry.command}</div>
+                        <div>
+                            <span className="text-green-400">$</span>
+                            <span className="text-cyan-500">{entry.command}</span>
+                        </div>
                         {entry.output === "linkedin" ? (
                             <a href="https://www.linkedin.com/in/muhammad-abdullah-nadeem-554216379" target="_blank" rel="noreferrer">
                                 <TypeAnimation
