@@ -25,6 +25,7 @@ const Terminal = ({ onClose }) => {
   show github    - display GitHub profile
   show resume    - display resume link
   show contact   - display email
+  show projects  - how to view projects
   clear          - clear terminal`;
             }
         } else if (command === "show linkedin") {
@@ -35,6 +36,8 @@ const Terminal = ({ onClose }) => {
             output = "resume";
         } else if (command === "show contact") {
             output = "contact";
+        } else if (command === "show projects") {
+            output = "projects";
         }
         else if (command === "clear") {
             setHistory([]);
@@ -99,9 +102,15 @@ const Terminal = ({ onClose }) => {
                                     className="text-[#9cdcfe] hover:underline cursor-pointer"
                                 />
                             </a>
-                        ) : (
-                            <div className="text-[#cccccc] whitespace-pre">{entry.output}</div>
-                        )}
+                        )
+                            : entry.output === "projects" ? (
+                                <div className="text-[#9cdcfe]">
+                                    projects → Open the 'Projects' folder in the Explorer to see all projects.
+                                </div>
+                            ) :
+                                (
+                                    <div className="text-[#cccccc] whitespace-pre">{entry.output}</div>
+                                )}
                     </div>
                 ))}
             </div>
