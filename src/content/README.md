@@ -1,28 +1,23 @@
-# 👋 Hi, I'm Abdullah
+# 👋 Hey, I'm Abdullah Nadeem
 
-Welcome to my Workspace Portfolio.
+A 2nd-year BS Computer Science student at the University of Lahore,
+passionate about building clean, interactive web experiences.
 
-This portfolio is inspired by VS Code and built using:
-
-- React
-- Tailwind CSS
-- Vite
+I'm currently seeking **Frontend Web Development internships or entry-level roles**
+where I can contribute, grow, and learn from experienced developers.
 
 ---
 
-## About
+## 🚀 Quick Navigation
 
-I'm passionate about frontend development and creating polished user experiences.
-
----
-
-## Tech Stack
-
-- React
-- JavaScript
-- Tailwind CSS
-- Git & GitHub
+| File | Description |
+|------|-------------|
+| `About.md` | My background, skills & education |
+| `Resume.pdf` | My latest resume |
+| `Projects/` | Things I've built |
+| `Contact.json` | Let's connect |
 
 ---
 
-Thanks for stopping by!
+> *"This portfolio itself is one of my projects —
+> a VS Code-inspired workspace built with React, Vite & Tailwind CSS."*

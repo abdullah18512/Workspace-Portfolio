@@ -1,6 +1,12 @@
 import readme from "../content/README.md?raw";
 import about from "../content/About.md?raw";
-import resume from "../../public/resume.pdf"
+import resume from "../../public/resume.pdf";
+import workspacePortfolio from "../content/WorkspacePortfolio.md?raw";
+import calculatorApp from "../content/CalculatorApp.md?raw";
+import staticWebsite from "../content/BankingApp.md?raw";
+import imageGallery from "../content/ImageGallery.md?raw";
+import hrPayroll from "../content/HRandPayroll Sys.md?raw";
+import supermarketBillingSys from "../content/SupermarketBillingSys.md?raw";
 const explorerItems = [
   {
     id: 0,
@@ -34,14 +40,38 @@ const explorerItems = [
             id: 6,
             name: "Workspace Portfolio.md",
             type: "markdown",
-            content: "..."
+            content: workspacePortfolio
           },
           {
             id: 7,
             name: "Calculator App.md",
             type: "markdown",
-            content: "..."
-          }
+            content: calculatorApp
+          },
+          {
+            id: 8,
+            name: "Static Website.md",
+            type: "markdown",
+            content: staticWebsite
+          },
+          {
+            id: 9,
+            name: "Image Gallery.md",
+            type: "markdown",
+            content: imageGallery
+          },
+          {
+            id: 10,
+            name: "HR and Payroll Sys.md",
+            type: "markdown",
+            content: hrPayroll
+          },
+          {
+            id: 11,
+            name: "Supermarket Billing Sys.md",
+            type: "markdown",
+            content: supermarketBillingSys
+          },
         ]
       },
       {
