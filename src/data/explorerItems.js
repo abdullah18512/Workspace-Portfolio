@@ -85,6 +85,17 @@ const explorerItems = [
           github: "https://github.com/abdullah18512"
         }, null , 2)
       },
+       {
+        id: 12,
+        name: "Project Links.json",
+        type: "json",
+        content: JSON.stringify({
+          CodeAlpha_Portfolio : "code-alpha-portfolio-nine.vercel.app",
+          CodeAlpha_Image_Gallery : "" ,
+          CodeAlpha_Calculator : "code-alpha-calculator-sand.vercel.app" ,
+          Banking_App_UI : "static-site-teal-five.vercel.app"
+        }, null , 2)
+      }
     ]
   }
 ];
