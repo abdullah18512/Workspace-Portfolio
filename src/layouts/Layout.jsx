@@ -4,6 +4,7 @@ import Editor from "../components/Editor/Editor";
 import Explorer from "../components/Explorer/Explorer";
 import TitleBar from "../components/TitleBar/TitleBar";
 import Terminal from "../components/Terminal/Terminal";
+import SearchPanel from "../components/Search/SearchPanel";
 
 
 function Layout() {
@@ -12,6 +13,7 @@ function Layout() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [terminalHeight, setTerminalHeight] = useState(192); // 12rem = 192px (h-48)
   const isDraggingRef = useRef(false);
+  const [activeSidebarTab, setActiveSidebarTab] = useState("explorer");
 
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "dark";
@@ -112,15 +114,21 @@ function Layout() {
 
         <div className="w-12 h-full bg-[var(--bg-activitybar)] border-r border-[var(--border-color)] transition-colors duration-200">
           {/* Activity Bar */}
-          <ActivityBar />
+          <ActivityBar activeTab={activeSidebarTab} setActiveTab={setActiveSidebarTab} />
         </div>
 
-        {/* Explorer */}
+        {/* Sidebar Container (Explorer / Search) */}
         <div className="w-64 bg-[var(--bg-sidebar)] border-r border-[var(--border-color)] transition-colors duration-200">
-          <Explorer
-            handleOpenFile={handleOpenFile}
-            activeFile={activeFile}
-          />
+          {activeSidebarTab === "explorer" ? (
+            <Explorer
+              handleOpenFile={handleOpenFile}
+              activeFile={activeFile}
+            />
+          ) : (
+            <SearchPanel
+              handleOpenFile={handleOpenFile}
+            />
+          )}
         </div>
 
         {/* Editor */}
