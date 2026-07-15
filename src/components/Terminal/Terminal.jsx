@@ -52,30 +52,30 @@ const Terminal = ({ onClose }) => {
     };
 
     return (
-        <div className="flex flex-col h-full">
-            <div className="flex items-center justify-between px-4 py-1 bg-[#252526] border-b border-neutral-700">
-                <span className="text-[#cccccc] text-[13px]">Terminal</span>
+        <div className="flex flex-col h-full bg-[var(--bg-terminal)] transition-colors duration-200">
+            <div className="flex items-center justify-between px-4 py-1.5 bg-[var(--bg-sidebar)] border-b border-[var(--border-color)] transition-colors duration-200">
+                <span className="text-[var(--text-muted)] text-[13px] font-semibold">Terminal</span>
                 <button
                     onClick={onClose}
-                    className="text-[#cccccc] hover:text-white text-lg leading-none"
+                    className="text-[var(--text-muted)] hover:text-[var(--text-main)] text-lg leading-none cursor-pointer p-0.5 hover:bg-[var(--bg-item-hover)] rounded transition-colors"
                 >
                     ×
                 </button>
             </div>
-            <div className="flex-1 p-4 text-[#cccccc] text-[13px] font-mono overflow-y-auto">
+            <div className="flex-1 p-4 text-[var(--text-muted)] text-[13px] font-mono overflow-y-auto">
                 {/* command history will render here */}
                 {history.map((entry, index) => (
                     <div key={index} className="mb-2">
                         <div>
-                            <span className="text-green-400">$</span>
-                            <span className="text-cyan-500">{entry.command}</span>
+                            <span className="text-[var(--text-terminal-prompt)] mr-2">$</span>
+                            <span className="text-[var(--text-terminal-command)] font-semibold">{entry.command}</span>
                         </div>
                         {entry.output === "linkedin" ? (
                             <a href="https://www.linkedin.com/in/muhammad-abdullah-nadeem-554216379" target="_blank" rel="noreferrer">
                                 <TypeAnimation
                                     sequence={["linkedin → www.linkedin.com/in/muhammad-abdullah-nadeem-554216379"]}
                                     speed={80}
-                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                    className="text-[var(--text-accent)] hover:underline cursor-pointer"
                                 />
                             </a>
                         ) : entry.output === "github" ? (
@@ -83,7 +83,7 @@ const Terminal = ({ onClose }) => {
                                 <TypeAnimation
                                     sequence={["github → https://github.com/abdullah18512"]}
                                     speed={80}
-                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                    className="text-[var(--text-accent)] hover:underline cursor-pointer"
                                 />
                             </a>
                         ) : entry.output === "resume" ? (
@@ -91,7 +91,7 @@ const Terminal = ({ onClose }) => {
                                 <TypeAnimation
                                     sequence={["resume → /resume.pdf (click to open)"]}
                                     speed={80}
-                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                    className="text-[var(--text-accent)] hover:underline cursor-pointer"
                                 />
                             </a>
                         ) : entry.output === "contact" ? (
@@ -99,29 +99,29 @@ const Terminal = ({ onClose }) => {
                                 <TypeAnimation
                                     sequence={["contact → abdvl.n18@gmail.com"]}
                                     speed={80}
-                                    className="text-[#9cdcfe] hover:underline cursor-pointer"
+                                    className="text-[var(--text-accent)] hover:underline cursor-pointer"
                                 />
                             </a>
                         )
                             : entry.output === "projects" ? (
-                                <div className="text-[#9cdcfe]">
+                                <div className="text-[var(--text-accent)]">
                                     projects → Open the 'Projects' folder in the Explorer to see all projects.
                                 </div>
                             ) :
                                 (
-                                    <div className="text-[#cccccc] whitespace-pre">{entry.output}</div>
+                                    <div className="text-[var(--text-muted)] whitespace-pre">{entry.output}</div>
                                 )}
                     </div>
                 ))}
             </div>
-            <div className="flex items-center px-4 py-2 border-t border-neutral-700">
-                <span className="text-green-400 mr-2">$</span>
+            <div className="flex items-center px-4 py-2 border-t border-[var(--border-color)] bg-[var(--bg-terminal)] transition-colors duration-200">
+                <span className="text-[var(--text-terminal-prompt)] mr-2 select-none">$</span>
                 <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleCommand}
-                    className="flex-1 bg-transparent text-[#cccccc] text-[13px] font-mono outline-none"
+                    className="flex-1 bg-transparent text-[var(--text-main)] text-[13px] font-mono outline-none"
                     placeholder="type 'help' to see available commands"
                 />
             </div>

@@ -1,6 +1,62 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+:root {
+  --bg-app: #1e1e1e;
+  --bg-sidebar: #252526;
+  --bg-activitybar: #181818;
+  --bg-titlebar: #181818;
+  --bg-statusbar: #007acc;
+  --bg-terminal: #181818;
+  --border-color: #2e2e2e;
+  --text-main: #ffffff;
+  --text-muted: #cccccc;
+  --text-subtle: #858585;
+  --bg-tab-active: #1e1e1e;
+  --bg-tab-inactive: #2d2d2d;
+  --bg-item-hover: #2a2d2e;
+  --bg-item-active: #37373d;
+  --text-item-active: #ffffff;
+  --text-accent: #9cdcfe;
+  --text-keyword: #569cd6;
+  --text-string: #ce9178;
+  --text-terminal-prompt: #4ade80;
+  --text-terminal-command: #06b6d4;
+  --scrollbar-track: #1e1e1e;
+  --scrollbar-thumb: #424242;
+  --scrollbar-thumb-hover: #5a5a5a;
+}
+
+.light {
+  --bg-app: #ffffff;
+  --bg-sidebar: #f3f3f3;
+  --bg-activitybar: #2c2c2c;
+  --bg-titlebar: #f3f3f3;
+  --bg-statusbar: #007acc;
+  --bg-terminal: #f3f3f3;
+  --border-color: #e4e4e7;
+  --text-main: #1f1f1f;
+  --text-muted: #555555;
+  --text-subtle: #757575;
+  --bg-tab-active: #ffffff;
+  --bg-tab-inactive: #ececec;
+  --bg-item-hover: #e4e6eb;
+  --bg-item-active: #e4e4e7;
+  --text-item-active: #09090b;
+  --text-accent: #0451a5;
+  --text-keyword: #0000ff;
+  --text-string: #a31515;
+  --text-terminal-prompt: #16a34a;
+  --text-terminal-command: #0891b2;
+  --scrollbar-track: #ffffff;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #a6a6a6;
+}
+
+/* Smooth theme transition */
+body {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
 
 /* VS Code Scrollbar */
 
@@ -10,21 +66,21 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e1e;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #424242;
+  background: var(--scrollbar-thumb);
   border-radius: none;
-  border: 2px solid #1e1e1e;
+  border: 2px solid var(--scrollbar-track);
   opacity: 50%;
   transition: all 0.2s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5a5a5a;
+  background: var(--scrollbar-thumb-hover);
 }
 
 ::-webkit-scrollbar-corner {
-  background: #1e1e1e;
+  background: var(--scrollbar-track);
 }

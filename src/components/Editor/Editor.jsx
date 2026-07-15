@@ -1,7 +1,7 @@
 import Tabs from "../Tabs/Tabs"
 import ReactMarkdown from 'react-markdown'
 
-const Editor = ({ activeFile, openFile, handleSwitchTab, handleCloseTab }) => {
+const Editor = ({ activeFile, openFile, handleSwitchTab, handleCloseTab, theme }) => {
     return (
         <div className="flex flex-col flex-1 h-full min-h-0">
             <Tabs
@@ -11,16 +11,16 @@ const Editor = ({ activeFile, openFile, handleSwitchTab, handleCloseTab }) => {
                 handleCloseTab={handleCloseTab}
             />
 
-            <div className="flex-1 flex justify-center items-center flex-col gap-4 p-6 min-h-0">
+            <div className="flex-1 flex justify-center items-center flex-col gap-4 p-6 min-h-0 bg-[var(--bg-app)] transition-colors duration-200">
                 {!activeFile ?
                     (
-                        <div>
-                            <h1 className="font-bold text-3xl text-center text-white">
-                                Welcome to Abdullah's Workspace.
+                        <div className="select-none animate-fade-in">
+                            <h1 className="font-bold text-3xl text-center text-[var(--text-main)]">
+                                Welcome to Abdullah's Workspace
                             </h1>
 
-                            <p className="text-white">A portfolo disguided as a code editor.</p>
-                            <p className=" text-white">Open a file to start exploring</p>
+                            <p className="text-[var(--text-muted)] text-center mt-2">A portfolio disguised as a code editor.</p>
+                            <p className="text-[var(--text-subtle)] text-center mt-1 text-sm">Open a file from the explorer to start.</p>
                         </div>
 
                     )
@@ -31,22 +31,22 @@ const Editor = ({ activeFile, openFile, handleSwitchTab, handleCloseTab }) => {
                                 {activeFile.type === "pdf" ? (
                                     <iframe
                                         src={activeFile.content}
-                                        className="w-full h-[calc(100vh-10rem)] rounded-none border-none"
+                                        className="w-full h-[calc(100vh-10rem)] rounded-none border-none bg-white"
                                         title={activeFile.name}
                                     />
                                 ) : activeFile.type === "json" ? (
-                                    <pre className="text-[#9cdcfe] text-sm font-mono leading-relaxed">
+                                    <pre className="text-[var(--text-accent)] text-sm font-mono leading-relaxed bg-[var(--bg-terminal)] p-4 rounded-md border border-[var(--border-color)] overflow-auto max-h-full">
                                         {activeFile.content}
                                     </pre>
                                 ) : activeFile.type === "markdown" ? (
-                                    <div className="prose prose-invert max-w-none">
+                                    <div className={`prose ${theme === 'dark' ? 'prose-invert' : ''} max-w-none`}>
                                         <ReactMarkdown>
                                             {activeFile.content}
                                         </ReactMarkdown>
                                     </div>
                                 ) : (
                                     <div className="flex items-center justify-center h-full">
-                                        <p className="text-[#6e7681] text-sm">Unsupported file type</p>
+                                        <p className="text-[var(--text-subtle)] text-sm">Unsupported file type</p>
                                     </div>
                                 )}
                             </div>

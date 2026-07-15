@@ -36,7 +36,7 @@ const FileItem = ({ item, handleOpenFile, level, activeFile }) => {
 
       <div
         style={{ paddingLeft: `${level * 16}px` }}
-        className={`flex items-center gap-2 px-2 py-0.75 cursor-pointer text-[13px] transition-colors duration-100 select-none ${activeFile?.id === item.id ? "bg-[#37373d] text-white" : "text-[#cccccc] hover:bg-[#2a2d2e]"} `}
+        className={`flex items-center gap-2 px-2 py-1.5 cursor-pointer text-[13px] transition-colors duration-150 select-none ${activeFile?.id === item.id ? "bg-[var(--bg-item-active)] text-[var(--text-item-active)]" : "text-[var(--text-muted)] hover:bg-[var(--bg-item-hover)] hover:text-[var(--text-main)]"} `}
         ref={itemRef}
         onClick={() => {
           if (item.type === "folder") {
